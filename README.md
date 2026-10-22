@@ -6,7 +6,7 @@ Proyecto de la **Evaluación N.° 2 - Programación Backend** (modalidad individ
 
 | | |
 |---|---|
-| **Estudiante** | `<Erik Jara>` |
+| **Estudiante** | `Erik Jara` |
 | **Docente** | Erick Bailey Rebolledo |
 | **Sistema operativo de desarrollo** | EndeavourOS (Linux, basado en Arch) |
 | **Base de datos** | MariaDB |
@@ -73,7 +73,6 @@ python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-> Ajusta la URL de clonación si el repositorio tiene otro nombre.
 
 ---
 
@@ -204,7 +203,7 @@ Con `DEBUG=False`, cualquier URL inexistente (o una propiedad no disponible) mue
 | Serializadores | `serializers.py` | `ModelSerializer`: convierten modelos a JSON y validan los datos |
 | ViewSets | `views.py` | `ModelViewSet`: implementan el CRUD completo de cada modelo |
 | Rutas | `urls.py` | `DefaultRouter`: genera los endpoints de cada ViewSet |
-| Rutas raíz | `motor_django/urls.py` | Página de inicio, admin e `include()` de la API |
+| Rutas raíz | `motor_django/urls.py` | Sitio público, admin e `include()` de la API |
 
 ---
 
@@ -301,4 +300,4 @@ Para actualizar las dependencias tras instalar una librería nueva: `pip freeze 
 
 ## Autor
 
-`<Erik Jara>` - Evaluación N.° 2, Programación Backend.
+`Erik Jara` - Evaluación N.° 2, Programación Backend.
