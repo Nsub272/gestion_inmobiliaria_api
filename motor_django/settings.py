@@ -108,9 +108,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/6.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-cl'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Santiago'
 
 USE_I18N = True
 
@@ -130,4 +130,10 @@ MAILERS = {
     'default': {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
+}
+
+REST_FRAMEWORK = {
+    'DATETIME_FORMAT': '%d-%m-%Y %H:%M:%S',
+    'DATE_FORMAT': '%d-%m-%Y',
+    'DATE_INPUT_FORMATS': ['%d-%m-%Y', 'iso-8601'],
 }
