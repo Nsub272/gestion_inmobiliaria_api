@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block titulo %}Propiedades disponibles · CasaNova Inmobiliaria{% endblock %}
+
+{% block contenido %}
+<section class="seccion">
+    <div class="contenedor">
+        <h1 style="font-size: clamp(2rem, 4vw, 2.8rem);">Propiedades disponibles</h1>
+
+        <form class="filtros" method="get" action="{% url 'catalogo' %}">
+            <div>
+                <label for="f-tipo">Tipo de propiedad</label>
+                <select id="f-tipo" name="tipo">
+                    <option value="">Todos</option>
+                    {% for t in tipos %}<option value="{{ t.pk }}" {% if seleccion.tipo == t.pk|stringformat:"s" %}selected{% endif %}>{{ t.nombre }}</option>{% endfor %}
+                </select>
+            </div>
+            <div>
+                <label for="f-comuna">Comuna</label>
+                <select id="f-comuna" name="comuna">
+                    <option value="">Todas</option>
+                    {% for c in comunas %}<option value="{{ c.pk }}" {% if seleccion.comuna == c.pk|stringformat:"s" %}selected{% endif %}>{{ c.nombre }}</option>{% endfor %}
+                </select>
+            </div>
+            <div>
+                <label for="f-dorm">Dormitorios</label>
+                <select id="f-dorm" name="dormitorios">
+                    <option value="">Cualquiera</option>
+                    {% for n in "1234" %}<option value="{{ n }}" {% if seleccion.dormitorios == n %}selected{% endif %}>{{ n }} o más</option>{% endfor %}
+                </select>
+            </div>
+            <button class="boton" type="submit">Filtrar</button>
+        </form>
+
+        {% if pagina.object_list %}
+        <div class="rejilla">
+            {% for p in pagina.object_list %}{% include "_ficha.html" %}{% endfor %}
+        </div>
+        {% if pagina.has_other_pages %}
+        <nav class="paginas" aria-label="Paginación">
+            {% if pagina.has_previous %}<a class="boton claro" href="?{% if filtros_url %}{{ filtros_url }}&{% endif %}page={{ pagina.previous_page_number }}">Anterior</a>{% endif %}
+            <span>Página {{ pagina.number }} de {{ pagina.paginator.num_pages }}</span>
+            {% if pagina.has_next %}<a class="boton claro" href="?{% if filtros_url %}{{ filtros_url }}&{% endif %}page={{ pagina.next_page_number }}">Siguiente</a>{% endif %}
+        </nav>
+        {% endif %}
+        {% else %}
+        <div class="vacio">
+            <h3>No encontramos propiedades con esos filtros</h3>
+            <p>Prueba con otra comuna o quita algún filtro. También puedes <a href="{% url 'inicio' %}#contacto">escribirnos</a> y buscamos por ti.</p>
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

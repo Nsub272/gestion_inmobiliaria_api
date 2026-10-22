@@ -24,7 +24,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -136,4 +136,11 @@ REST_FRAMEWORK = {
     'DATETIME_FORMAT': '%d-%m-%Y %H:%M:%S',
     'DATE_FORMAT': '%d-%m-%Y',
     'DATE_INPUT_FORMATS': ['%d-%m-%Y', 'iso-8601'],
+}
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {'console': {'class': 'logging.StreamHandler'}},
+    'loggers': {'django.request': {'handlers': ['console'], 'level': 'ERROR', 'propagate': False}},
 }

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block titulo %}CasaNova Inmobiliaria{% endblock %}</title>
+    <meta name="description" content="{% block descripcion %}Arriendo y venta de casas, departamentos, locales y terrenos. Te acompañamos desde la búsqueda hasta la firma del contrato.{% endblock %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bosque: #16342B; --musgo: #5F7F6B; --niebla: #EDF1EE; --papel: #FBFCFA;
+            --roca: #28323A; --copihue: #B3304D; --linea: #D5DDD8; --suave: #5A6770;
+        }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+        body { margin: 0; font-family: "Public Sans", system-ui, sans-serif; color: var(--roca); background: var(--papel); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
+        h1, h2, h3 { font-family: "Bricolage Grotesque", "Public Sans", system-ui, sans-serif; line-height: 1.12; margin: 0; letter-spacing: -.01em; color: var(--bosque); }
+        h1 { font-size: clamp(2.3rem, 5.5vw, 4rem); }
+        h2 { font-size: clamp(1.7rem, 3.4vw, 2.3rem); }
+        h3 { font-size: 1.15rem; }
+        a { color: var(--copihue); }
+        :focus-visible { outline: 3px solid var(--copihue); outline-offset: 2px; }
+        .contenedor { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 1.5rem; }
+        main { flex: 1; }
+
+        /* Cabecera */
+        .cabecera { background: var(--papel); border-bottom: 1px solid var(--linea); position: sticky; top: 0; z-index: 10; }
+        .cabecera .contenedor { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 68px; flex-wrap: wrap; }
+        .marca { display: flex; align-items: center; gap: .6rem; text-decoration: none; color: var(--bosque); font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 1.3rem; }
+        .nav { display: flex; align-items: center; gap: 1.4rem; flex-wrap: wrap; }
+        .nav a { color: var(--roca); text-decoration: none; font-weight: 500; }
+        .nav a:hover { color: var(--copihue); }
+
+        /* Botones */
+        .boton { display: inline-block; padding: .7rem 1.3rem; border-radius: 999px; background: var(--copihue); color: #fff !important; text-decoration: none; font-weight: 600; border: 0; cursor: pointer; font: inherit; font-weight: 600; transition: background .15s; }
+        .boton:hover { background: #8F2239; }
+        .boton.claro { background: transparent; color: var(--bosque) !important; border: 1.5px solid var(--bosque); }
+        .boton.claro:hover { background: var(--bosque); color: #fff !important; }
+
+        /* Portada */
+        .portada { background: var(--bosque); color: #fff; overflow: hidden; }
+        .portada .contenedor { display: grid; grid-template-columns: 1.15fr .85fr; gap: 2rem; align-items: center; padding-top: 3.5rem; padding-bottom: 3.5rem; }
+        .portada h1 { color: #fff; max-width: 14ch; }
+        .portada p.bajada { color: #CFDCD4; font-size: 1.15rem; max-width: 46ch; margin: 1.1rem 0 1.8rem; }
+        .portada svg { width: 100%; height: auto; display: block; }
+        .buscador { background: var(--papel); color: var(--roca); border-radius: 14px; padding: 1.1rem; display: grid; grid-template-columns: repeat(3, 1fr) auto; gap: .8rem; align-items: end; }
+        .buscador label, .filtros label { display: block; font-size: .85rem; font-weight: 600; color: var(--bosque); margin-bottom: .25rem; }
+        select { width: 100%; padding: .6rem .7rem; border: 1px solid var(--linea); border-radius: 8px; background: #fff; font: inherit; color: var(--roca); }
+        .nota-oferta { margin: 1rem 0 0; color: #CFDCD4; font-size: .95rem; }
+
+        /* Secciones */
+        .seccion { padding: 4rem 0; }
+        .seccion.gris { background: var(--niebla); }
+        .encabezado { display: flex; justify-content: space-between; align-items: end; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+        .encabezado p { margin: .4rem 0 0; color: var(--suave); max-width: 52ch; }
+
+        /* Tarjetas de propiedades */
+        .rejilla { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+        .ficha { background: #fff; border: 1px solid var(--linea); border-radius: 6px; overflow: hidden; display: flex; flex-direction: column; text-decoration: none; color: var(--roca); transition: border-color .15s; }
+        .ficha:hover { border-color: var(--bosque); }
+        .ficha .imagen { height: 160px; display: grid; place-items: center; position: relative; }
+        .ficha .imagen svg { width: 76px; height: 76px; }
+        .t0 { background: #16342B; } .t1 { background: #4B6B5A; } .t2 { background: #3A4852; } .t3 { background: #7A2438; }
+        .etiqueta { position: absolute; top: .8rem; left: .8rem; background: var(--papel); color: var(--bosque); padding: .15rem .7rem; border-radius: 999px; font-size: .82rem; font-weight: 600; }
+        .ficha .cuerpo { padding: 1rem 1.1rem 1.2rem; display: flex; flex-direction: column; gap: .35rem; flex: 1; }
+        .ficha .ubicacion { color: var(--suave); font-size: .92rem; margin: 0; }
+        .ficha .datos { display: flex; gap: 1rem; color: var(--suave); font-size: .92rem; margin: .3rem 0; }
+        .ficha .precio { margin-top: auto; font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 1.35rem; color: var(--copihue); }
+        .vacio { padding: 2.5rem; background: #fff; border: 1px dashed var(--linea); border-radius: 6px; text-align: center; color: var(--suave); }
+        .vacio h3 { margin-bottom: .4rem; }
+
+        /* Servicios y proceso */
+        .tres { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+        .tres p { color: var(--suave); margin: .5rem 0 0; }
+        .pasos { counter-reset: paso; list-style: none; padding: 0; margin: 0; }
+        .pasos li { counter-increment: paso; display: grid; grid-template-columns: 3rem 1fr; gap: .8rem; padding: 1.1rem 0; border-top: 1px solid var(--linea); }
+        .pasos li::before { content: counter(paso); font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 1.8rem; color: var(--copihue); line-height: 1; }
+        .pasos li p { margin: .2rem 0 0; color: var(--suave); }
+        .dos { display: grid; grid-template-columns: 1fr 1.2fr; gap: 3rem; align-items: start; }
+
+        /* Contacto */
+        .contacto { background: var(--bosque); color: #fff; }
+        .contacto h2 { color: #fff; }
+        .contacto p { color: #CFDCD4; max-width: 50ch; }
+        .contacto .datos-contacto { margin: 1.2rem 0 1.6rem; font-weight: 500; color: #fff; }
+        .contacto .boton.claro { color: #fff !important; border-color: #fff; }
+        .contacto .boton.claro:hover { background: #fff; color: var(--bosque) !important; }
+
+        /* Catálogo y detalle */
+        .filtros { display: grid; grid-template-columns: repeat(3, 1fr) auto; gap: .8rem; align-items: end; background: var(--niebla); padding: 1rem; border-radius: 10px; margin: 1.5rem 0 2rem; }
+        .paginas { display: flex; gap: .6rem; justify-content: center; align-items: center; margin-top: 2rem; }
+        .ruta { font-size: .92rem; color: var(--suave); margin-bottom: 1.2rem; }
+        .ruta a { color: var(--suave); }
+        .detalle { display: grid; grid-template-columns: 1.3fr .7fr; gap: 2.5rem; align-items: start; }
+        .detalle .imagen { height: 340px; border-radius: 6px; display: grid; place-items: center; position: relative; }
+        .detalle .imagen svg { width: 120px; height: 120px; }
+        .caracteristicas { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1rem; margin: 1.5rem 0; padding: 0; list-style: none; }
+        .caracteristicas li { border-top: 2px solid var(--bosque); padding-top: .5rem; color: var(--suave); font-size: .92rem; }
+        .caracteristicas strong { display: block; font-size: 1.3rem; color: var(--bosque); font-family: "Bricolage Grotesque", sans-serif; }
+        .consulta { background: var(--niebla); border-radius: 10px; padding: 1.4rem; position: sticky; top: 90px; }
+        .consulta .precio { font-family: "Bricolage Grotesque", sans-serif; font-weight: 700; font-size: 1.9rem; color: var(--copihue); margin: .3rem 0 1rem; }
+        .consulta .boton { display: block; text-align: center; }
+
+        /* Pie */
+        .pie { background: var(--roca); color: #C5CED4; padding: 2rem 0; font-size: .92rem; }
+        .pie .contenedor { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+        .pie a { color: #fff; }
+
+        @media (max-width: 860px) {
+            .portada .contenedor, .dos, .detalle { grid-template-columns: 1fr; }
+            .portada svg { max-width: 360px; margin: 0 auto; }
+            .buscador, .filtros { grid-template-columns: 1fr; }
+            .consulta { position: static; }
+        }
+    </style>
+</head>
+<body>
+    <header class="cabecera">
+        <div class="contenedor">
+            <a class="marca" href="{% url 'inicio' %}">
+                <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path d="M3 14L15 4l12 10v12H3z" fill="#16342B"/><rect x="12" y="16" width="6" height="10" fill="#FBFCFA"/><path d="M1 15L15 3l14 12" fill="none" stroke="#B3304D" stroke-width="3" stroke-linecap="round"/></svg>
+                CasaNova
+            </a>
+            <nav class="nav" aria-label="Principal">
+                <a href="{% url 'inicio' %}">Inicio</a>
+                <a href="{% url 'catalogo' %}">Propiedades</a>
+                <a href="{% url 'inicio' %}#proceso">Cómo trabajamos</a>
+                <a class="boton" href="{% url 'inicio' %}#contacto">Contáctanos</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>{% block contenido %}{% endblock %}</main>
+
+    <footer class="pie">
+        <div class="contenedor">
+            <span>CasaNova Inmobiliaria. Arriendo y venta de propiedades.</span>
+            <span>contacto@casanova.cl · +56 9 0000 0000</span>
+        </div>
+    </footer>
+</body>
+</html>

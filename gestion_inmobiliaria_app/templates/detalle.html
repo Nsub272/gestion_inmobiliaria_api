@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block titulo %}{{ p.titulo }} · CasaNova Inmobiliaria{% endblock %}
+{% block descripcion %}{{ p.tipo.nombre }} en {{ p.comuna.nombre }}, {{ p.comuna.region.nombre }}. {{ p.superficie_m2|floatformat:"-1" }} m², {{ p.dormitorios }} dormitorios, {{ p.banios }} baños.{% endblock %}
+
+{% block contenido %}
+<section class="seccion">
+    <div class="contenedor">
+        <p class="ruta"><a href="{% url 'inicio' %}">Inicio</a> / <a href="{% url 'catalogo' %}">Propiedades</a> / {{ p.titulo }}</p>
+        <div class="detalle">
+            <div>
+                <div class="imagen t{{ p.tono }}">
+                    <span class="etiqueta">{{ p.tipo.nombre }}</span>
+                    <svg viewBox="0 0 80 80" aria-hidden="true"><path d="M10 38L40 12l30 26v30H10z" fill="#EDF1EE"/><rect x="33" y="44" width="14" height="24" fill="#16342B"/><path d="M5 40L40 9l35 31" fill="none" stroke="#B3304D" stroke-width="5" stroke-linecap="round"/></svg>
+                </div>
+                <h1 style="font-size: clamp(1.9rem, 4vw, 2.7rem); margin-top: 1.5rem;">{{ p.titulo }}</h1>
+                <p style="color: var(--suave); margin: .4rem 0 0;">{{ p.comuna.nombre }}, {{ p.comuna.region.nombre }}</p>
+                <ul class="caracteristicas">
+                    <li><strong>{{ p.superficie_m2|floatformat:"-1" }} m²</strong>Superficie</li>
+                    <li><strong>{{ p.dormitorios }}</strong>Dormitorios</li>
+                    <li><strong>{{ p.banios }}</strong>Baños</li>
+                </ul>
+                {% if p.descripcion %}
+                <h2 style="font-size: 1.4rem; margin-bottom: .5rem;">Descripción</h2>
+                <p style="max-width: 62ch;">{{ p.descripcion|linebreaksbr }}</p>
+                {% endif %}
+            </div>
+            <aside class="consulta">
+                <span style="color: var(--suave);">Precio</span>
+                <div class="precio">{{ p.precio_texto }}</div>
+                <a class="boton" href="mailto:contacto@casanova.cl?subject=Consulta%20por%20{{ p.titulo|urlencode }}">Consultar por esta propiedad</a>
+                <p style="font-size: .9rem; color: var(--suave); margin: 1rem 0 0;">Te responderemos para coordinar una visita.</p>
+            </aside>
+        </div>
+    </div>
+</section>
+{% endblock %}
