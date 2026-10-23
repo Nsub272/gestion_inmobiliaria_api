@@ -44,7 +44,7 @@ Proyecto de la **Evaluación N.° 2 - Programación Backend** (modalidad individ
     ├── views_web.py               # Vistas del sitio público (inicio, catálogo, detalle)
     ├── urls.py                    # Rutas de la API mediante DefaultRouter
     ├── admin.py
-    ├── templates/                 # base, inicio, catálogo, detalle, _ficha y 404
+    ├── templates/                 # base, inicio, catálogo, detalle, ficha y 404
     └── migrations/                # Migraciones de la base de datos
 ```
 
