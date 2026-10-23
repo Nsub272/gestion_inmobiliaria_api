@@ -16,12 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from gestion_inmobiliaria_app import views_web
 
 urlpatterns = [
-    path('', views_web.inicio, name='inicio'),
-    path('propiedades/', views_web.catalogo, name='catalogo'),
-    path('propiedades/<int:pk>/', views_web.detalle_propiedad, name='detalle_propiedad'),
     path('admin/', admin.site.urls),
     path('gestion_inmobiliaria_app/', include('gestion_inmobiliaria_app.urls')),
 ]
