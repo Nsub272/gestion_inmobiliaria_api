@@ -6,7 +6,7 @@ Proyecto de la **Evaluación N.° 2 - Programación Backend** (modalidad individ
 
 | | |
 |---|---|
-| **Estudiante** | `Erik Jara` |
+| **Estudiante** | Erik Jara |
 | **Docente** | Erick Bailey Rebolledo |
 | **Sistema operativo de desarrollo** | EndeavourOS (Linux, basado en Arch) |
 | **Base de datos** | MariaDB |
@@ -36,15 +36,13 @@ Proyecto de la **Evaluación N.° 2 - Programación Backend** (modalidad individ
 ├── README.md
 ├── motor_django/                  # Configuración del proyecto
 │   ├── settings.py
-│   └── urls.py                    # Sitio público, admin e include de la API
+│   └── urls.py                    # Rutas raíz: admin e include de la API
 └── gestion_inmobiliaria_app/      # Aplicación principal
     ├── models.py                  # Modelo de datos (8 modelos)
     ├── serializers.py             # Serializadores y validaciones
-    ├── views.py                   # ModelViewSet por recurso (API REST)
-    ├── views_web.py               # Vistas del sitio público (inicio, catálogo, detalle)
-    ├── urls.py                    # Rutas de la API mediante DefaultRouter
+    ├── views.py                   # ModelViewSet por recurso
+    ├── urls.py                    # Rutas mediante DefaultRouter
     ├── admin.py
-    ├── templates/                 # base, inicio, catálogo, detalle, ficha y 404
     └── migrations/                # Migraciones de la base de datos
 ```
 
@@ -166,32 +164,22 @@ python manage.py migrate
 
 | Sección | URL |
 |---|---|
-| Sitio público | `http://127.0.0.1:8000/` |
 | API (raíz del router) | `http://127.0.0.1:8000/gestion_inmobiliaria_app/` |
 | Panel de administración | `http://127.0.0.1:8000/admin/` |
 
 ---
 
-## 8. Sitio público y manejo de errores 404
+## 8. Manejo de errores
 
-Además de la API, el proyecto incluye un sitio web de cara al público que **no expone datos internos del backend**:
+Todas las operaciones se realizan mediante los endpoints generados por los `ModelViewSet`; el proyecto no incluye interfaces HTML propias. Las respuestas de error son JSON:
 
-| Página | Ruta | Contenido |
-|---|---|---|
-| Inicio | `/` | Portada con buscador, propiedades recién publicadas, servicios, proceso y contacto |
-| Catálogo | `/propiedades/` | Listado con filtros (tipo, comuna, dormitorios) y paginación |
-| Detalle | `/propiedades/<id>/` | Características, precio y botón de consulta |
+| Código | Situación |
+|---|---|
+| `400` | Datos inválidos o duplicados (RUT incorrecto, precio negativo, fechas incoherentes) |
+| `404` | El registro solicitado no existe |
+| `409` | No se puede eliminar un registro con datos asociados (`PROTECT`) |
 
-- Solo se muestran propiedades **habilitadas y en estado `DISPONIBLE`**.
-- Del inmueble se publica únicamente la comuna y la región: nunca la dirección exacta ni los datos del propietario.
-- Los precios se muestran en formato chileno (`$120.000.000` o `UF 3.500,50`).
-- Las plantillas están en `gestion_inmobiliaria_app/templates/` y extienden `base.html`.
-
-### Errores 404
-
-Con `DEBUG=False`, cualquier URL inexistente (o una propiedad no disponible) muestra la página personalizada `404.html`, sin rutas ni información del servidor. Los recursos inexistentes de la API responden en JSON con estado 404.
-
-> Con `DEBUG=True` Django muestra su pantalla técnica de depuración, que expone la estructura del proyecto. Por eso el proyecto se entrega con `DEBUG=False`.
+El proyecto se entrega con `DEBUG=False` para no exponer información interna del servidor.
 
 ---
 
@@ -203,7 +191,7 @@ Con `DEBUG=False`, cualquier URL inexistente (o una propiedad no disponible) mue
 | Serializadores | `serializers.py` | `ModelSerializer`: convierten modelos a JSON y validan los datos |
 | ViewSets | `views.py` | `ModelViewSet`: implementan el CRUD completo de cada modelo |
 | Rutas | `urls.py` | `DefaultRouter`: genera los endpoints de cada ViewSet |
-| Rutas raíz | `motor_django/urls.py` | Sitio público, admin e `include()` de la API |
+| Rutas raíz | `motor_django/urls.py` | Admin e `include()` de la API |
 
 ---
 
@@ -300,4 +288,4 @@ Para actualizar las dependencias tras instalar una librería nueva: `pip freeze 
 
 ## Autor
 
-`Erik Jara` - Evaluación N.° 2, Programación Backend.
+Erik Jara - Evaluación N.° 2, Programación Backend.
