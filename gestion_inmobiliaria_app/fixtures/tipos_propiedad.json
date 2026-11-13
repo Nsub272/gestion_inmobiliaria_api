@@ -1,0 +1,57 @@
+[
+    {
+        "model": "gestion_inmobiliaria_app.tipopropiedad",
+        "pk": 1,
+        "fields": {
+            "habilitado": true,
+            "created_at": "2026-01-01T00:00:00Z",
+            "updated_at": "2026-01-01T00:00:00Z",
+            "nombre": "Casa",
+            "descripcion": "Vivienda unifamiliar con terreno propio."
+        }
+    },
+    {
+        "model": "gestion_inmobiliaria_app.tipopropiedad",
+        "pk": 2,
+        "fields": {
+            "habilitado": true,
+            "created_at": "2026-01-01T00:00:00Z",
+            "updated_at": "2026-01-01T00:00:00Z",
+            "nombre": "Departamento",
+            "descripcion": "Vivienda ubicada en un edificio."
+        }
+    },
+    {
+        "model": "gestion_inmobiliaria_app.tipopropiedad",
+        "pk": 3,
+        "fields": {
+            "habilitado": true,
+            "created_at": "2026-01-01T00:00:00Z",
+            "updated_at": "2026-01-01T00:00:00Z",
+            "nombre": "Oficina",
+            "descripcion": "Espacio destinado a actividades profesionales."
+        }
+    },
+    {
+        "model": "gestion_inmobiliaria_app.tipopropiedad",
+        "pk": 4,
+        "fields": {
+            "habilitado": true,
+            "created_at": "2026-01-01T00:00:00Z",
+            "updated_at": "2026-01-01T00:00:00Z",
+            "nombre": "Local comercial",
+            "descripcion": "Espacio para venta de productos o servicios."
+        }
+    },
+    {
+        "model": "gestion_inmobiliaria_app.tipopropiedad",
+        "pk": 5,
+        "fields": {
+            "habilitado": true,
+            "created_at": "2026-01-01T00:00:00Z",
+            "updated_at": "2026-01-01T00:00:00Z",
+            "nombre": "Terreno",
+            "descripcion": "Sitio sin construcción, urbano o rural."
+        }
+    }
+]
