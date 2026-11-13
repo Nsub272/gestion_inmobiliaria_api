@@ -1,0 +1,178 @@
+[
+    {
+        "model": "gestion_inmobiliaria_app.region",
+        "pk": 1,
+        "fields": {
+            "habilitado": true,
+            "created_at": "2026-01-01T00:00:00Z",
+            "updated_at": "2026-01-01T00:00:00Z",
+            "codigo": "15",
+            "nombre": "Arica y Parinacota"
+        }
+    },
+    {
+        "model": "gestion_inmobiliaria_app.region",
+        "pk": 2,
+        "fields": {
+            "habilitado": true,
+            "created_at": "2026-01-01T00:00:00Z",
+            "updated_at": "2026-01-01T00:00:00Z",
+            "codigo": "01",
+            "nombre": "Tarapacá"
+        }
+    },
+    {
+        "model": "gestion_inmobiliaria_app.region",
+        "pk": 3,
+        "fields": {
+            "habilitado": true,
+            "created_at": "2026-01-01T00:00:00Z",
+            "updated_at": "2026-01-01T00:00:00Z",
+            "codigo": "02",
+            "nombre": "Antofagasta"
+        }
+    },
+    {
+        "model": "gestion_inmobiliaria_app.region",
+        "pk": 4,
+        "fields": {
+            "habilitado": true,
+            "created_at": "2026-01-01T00:00:00Z",
+            "updated_at": "2026-01-01T00:00:00Z",
+            "codigo": "03",
+            "nombre": "Atacama"
+        }
+    },
+    {
+        "model": "gestion_inmobiliaria_app.region",
+        "pk": 5,
+        "fields": {
+            "habilitado": true,
+            "created_at": "2026-01-01T00:00:00Z",
+            "updated_at": "2026-01-01T00:00:00Z",
+            "codigo": "04",
+            "nombre": "Coquimbo"
+        }
+    },
+    {
+        "model": "gestion_inmobiliaria_app.region",
+        "pk": 6,
+        "fields": {
+            "habilitado": true,
+            "created_at": "2026-01-01T00:00:00Z",
+            "updated_at": "2026-01-01T00:00:00Z",
+            "codigo": "05",
+            "nombre": "Valparaíso"
+        }
+    },
+    {
+        "model": "gestion_inmobiliaria_app.region",
+        "pk": 7,
+        "fields": {
+            "habilitado": true,
+            "created_at": "2026-01-01T00:00:00Z",
+            "updated_at": "2026-01-01T00:00:00Z",
+            "codigo": "13",
+            "nombre": "Metropolitana de Santiago"
+        }
+    },
+    {
+        "model": "gestion_inmobiliaria_app.region",
+        "pk": 8,
+        "fields": {
+            "habilitado": true,
+            "created_at": "2026-01-01T00:00:00Z",
+            "updated_at": "2026-01-01T00:00:00Z",
+            "codigo": "06",
+            "nombre": "Libertador General Bernardo O'Higgins"
+        }
+    },
+    {
+        "model": "gestion_inmobiliaria_app.region",
+        "pk": 9,
+        "fields": {
+            "habilitado": true,
+            "created_at": "2026-01-01T00:00:00Z",
+            "updated_at": "2026-01-01T00:00:00Z",
+            "codigo": "07",
+            "nombre": "Maule"
+        }
+    },
+    {
+        "model": "gestion_inmobiliaria_app.region",
+        "pk": 10,
+        "fields": {
+            "habilitado": true,
+            "created_at": "2026-01-01T00:00:00Z",
+            "updated_at": "2026-01-01T00:00:00Z",
+            "codigo": "16",
+            "nombre": "Ñuble"
+        }
+    },
+    {
+        "model": "gestion_inmobiliaria_app.region",
+        "pk": 11,
+        "fields": {
+            "habilitado": true,
+            "created_at": "2026-01-01T00:00:00Z",
+            "updated_at": "2026-01-01T00:00:00Z",
+            "codigo": "08",
+            "nombre": "Biobío"
+        }
+    },
+    {
+        "model": "gestion_inmobiliaria_app.region",
+        "pk": 12,
+        "fields": {
+            "habilitado": true,
+            "created_at": "2026-01-01T00:00:00Z",
+            "updated_at": "2026-01-01T00:00:00Z",
+            "codigo": "09",
+            "nombre": "La Araucanía"
+        }
+    },
+    {
+        "model": "gestion_inmobiliaria_app.region",
+        "pk": 13,
+        "fields": {
+            "habilitado": true,
+            "created_at": "2026-01-01T00:00:00Z",
+            "updated_at": "2026-01-01T00:00:00Z",
+            "codigo": "14",
+            "nombre": "Los Ríos"
+        }
+    },
+    {
+        "model": "gestion_inmobiliaria_app.region",
+        "pk": 14,
+        "fields": {
+            "habilitado": true,
+            "created_at": "2026-01-01T00:00:00Z",
+            "updated_at": "2026-01-01T00:00:00Z",
+            "codigo": "10",
+            "nombre": "Los Lagos"
+        }
+    },
+    {
+        "model": "gestion_inmobiliaria_app.region",
+        "pk": 15,
+        "fields": {
+            "habilitado": true,
+            "created_at": "2026-01-01T00:00:00Z",
+            "updated_at": "2026-01-01T00:00:00Z",
+            "codigo": "11",
+            "nombre": "Aysén del General Carlos Ibáñez del Campo"
+        }
+    },
+    {
+        "model": "gestion_inmobiliaria_app.region",
+        "pk": 16,
+        "fields": {
+            "habilitado": true,
+            "created_at": "2026-01-01T00:00:00Z",
+            "updated_at": "2026-01-01T00:00:00Z",
+            "codigo": "12",
+            "nombre": "Magallanes y de la Antártica Chilena"
+        }
+    }
+]
